@@ -112,63 +112,14 @@ void barva(int color) {
 void RAM_ZED() {
     int i, j, hraci_pole[RADKY][SLOUPECKY];
     //Vyplni hraci pole v okrajich* 
-    for (i = 0; i < 80; i++)
-    {
-        hraci_pole[0][i] = 1;
-        hraci_pole[24][i] = 1;
-    }
-    for (j = 0; j < 25; j++)
-    {
-        hraci_pole[j][0] = 1;
-        hraci_pole[j][79] = 1;
-    }
-    /* Vykresli zed */
-    for (i = 0; i < 25; i++)
-    {
-        gotoxy(0, i);
-        putc('|', stdout);
-        gotoxy(79, i);
-        putc('|', stdout);
-    }
-    for (i = 0; i < 80; i++) 
-    {
-        gotoxy(i, 0);
-        putc('-', stdout);
-        gotoxy(i, 24);
-        putc('-', stdout);
-    }
-    for (i = 21; i < 24; i++) {
-
-        for (j = 1; j < 79; j++) {
-            gotoxy(j, i);
-            putc('X', stdout);
-                
+    FILE* f = fopen("Tanky\\gameboard.txt", "r");
+    char c = 'c';
+    if (f) {
+        while ((c = fgetc(f)) != EOF){
+            printf("%c", c);
         }
     }
-    for (i = 11; i < 56; i++) {
-        gotoxy(i, 20);
-        putc('X', stdout);
-    }
-    for (i = 20; i < 45; i++) {
-        gotoxy(i, 19);
-        putc('X', stdout);
-    }
-    for (i = 21; i < 39; i++) {
-        gotoxy(i, 18);
-        putc('X', stdout);
-    }
-    for (i = 28; i < 38; i++) {
-        gotoxy(i, 17);
-        putc('X', stdout);
-    }
-    for (i = 29; i < 37; i++) {
-        gotoxy(i, 16);
-        putc('X', stdout);
-    }
-    for (i = 32; i < 36; i++) {
-        gotoxy(i, 15);
-        putc('X', stdout);
-    }
+    fclose(f);
 }
 
 typedef struct Souradnice_tanku {
