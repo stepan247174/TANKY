@@ -137,6 +137,38 @@ void RAM_ZED() {
         gotoxy(i, 24);
         putc('-', stdout);
     }
+    for (i = 21; i < 24; i++) {
+
+        for (j = 1; j < 79; j++) {
+            gotoxy(j, i);
+            putc('X', stdout);
+                
+        }
+    }
+    for (i = 11; i < 56; i++) {
+        gotoxy(i, 20);
+        putc('X', stdout);
+    }
+    for (i = 20; i < 45; i++) {
+        gotoxy(i, 19);
+        putc('X', stdout);
+    }
+    for (i = 21; i < 39; i++) {
+        gotoxy(i, 18);
+        putc('X', stdout);
+    }
+    for (i = 28; i < 38; i++) {
+        gotoxy(i, 17);
+        putc('X', stdout);
+    }
+    for (i = 29; i < 37; i++) {
+        gotoxy(i, 16);
+        putc('X', stdout);
+    }
+    for (i = 32; i < 36; i++) {
+        gotoxy(i, 15);
+        putc('X', stdout);
+    }
 }
 
 typedef struct Souradnice_tanku {
