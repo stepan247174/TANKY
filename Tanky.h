@@ -112,7 +112,7 @@ void barva(int color) {
 void RAM_ZED() {
     int i, j, hraci_pole[RADKY][SLOUPECKY];
     //Vyplni hraci pole v okrajich* 
-    FILE* f = fopen("Tanky\\gameboard.txt", "r");
+    FILE* f = fopen("C:\\Users\\Štěpán\\source\\repos\\Tanky\\gameboard.txt", "r");
     char c = 'c';
     if (f) {
         while ((c = fgetc(f)) != EOF){
