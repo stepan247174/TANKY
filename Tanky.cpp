@@ -34,21 +34,35 @@ int main()
 				scanf("%d", &strelivo[r]);
 				gotoxy(80 + r, 6);
 				printf("                             ");
-				if ((hraci[1].zasahy == 3) && (h == 1)) {
-					h++;
-				}
-				if ((hraci[2].zasahy == 3) && (h == 2)) {
-					h++;
-				}
-				if ((hraci[3].zasahy == 3) && (h == 3)) {
-					h = h - 2;
-				}
-				else if ((hraci[1].zasahy == 3) && (h == 1)) {
-					return 0;
-				}
+				
 				int Smer = JakyTank(h);
 				strelba(startyX[h], startyY[h], Smer, strelivo[r]);
 				VypisJmena(playersCount);
+				if ((hraci[1].zasahy == 3)) {
+					h++;
+					gotoxy(10, 10); barva(3);
+					printf("%s prohral", hraci[1].jmeno_hrace);
+					gotoxy(10, 11); barva(1);
+					printf("%s vyhrava!!!!!!!!!!!!!!", hraci[2].jmeno_hrace); delay(10000);
+					gotoxy(10, 5); barva(0); exit(0);
+				}
+				if ((hraci[2].zasahy == 3)) {
+					h++;
+					gotoxy(10, 11); barva(3);
+					printf("%s prohral", hraci[2].jmeno_hrace);
+					gotoxy(10, 10); barva(1);
+					printf("%s vyhrava!!!!!!!!!!!!!!!!!!", hraci[1].jmeno_hrace); delay(5000);
+					gotoxy(10, 5); barva(0); exit(0);
+				}
+				if ((hraci[3].zasahy == 3)) {
+					h = h++;
+					gotoxy(10, 10); barva(3);
+					printf("%s prohral", hraci[3].jmeno_hrace);
+					return 0;
+					gotoxy(10, 11); barva(1);
+					printf("%s prohral", hraci[3].jmeno_hrace); delay(2000);
+					gotoxy(10, 5); barva(0); exit(0);
+				}
 				r++;
 			}
 		} while ((hraci[1].zasahy != 3) || (hraci[2].zasahy != 3) || (hraci[3].zasahy != 3));

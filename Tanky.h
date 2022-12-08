@@ -139,6 +139,9 @@ void barva(int color) {
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY |
             FOREGROUND_RED);
         break;
+    case 4: /* Cervena na Cerne */
+        SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY |
+            FOREGROUND_RED);
     default: /* Bila na Cerne */
         SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_INTENSITY |
             FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
@@ -281,34 +284,48 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
             strela->x = strela->x + i * smer;
             strela->y = strela->y - 1;
            // gotoxy(strela->x, strela->y);
-           // scanf("%c", &baf[w]);
+           // k = getc(stdout); 
             if (((strela->x) >= SLOUPECKY) || ((strela->y) >= RADKY) || ((strela->x) <= 0) || ((strela->y) <= 0)) {
                 gotoxy(10, 10);
                 printf("Uplne mimo!");
-                delay(3000);
+                delay(2000);
                 gotoxy(10, 10);
                 printf("             ");
+                break;
+            }
+            else if ((strela->x == START_X2) && (strela->y == START_Y2) && (hraci[2].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[2].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           "); 
+                break;
+            }
+            else if ((strela->x == START_X3) && (strela->y == START_Y3) && (hraci[3].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[3].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           ");
+                break;
+            }
+            else if ((strela->x == START_X1) && (strela->y == START_Y1) && (hraci[1].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[1].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           ");
                 break;
             }
             else if ((strela->x == START_X2) && (strela->y == START_Y2)) {
                 hraci[2].zasahy++;
                 vykresli_tank_start(2, hraci[2].zasahy + 1);
-                gotoxy(10, 10);
-                printf("%s dostal bidu!", hraci[2].jmeno_hrace);
+                gotoxy(10, 10); printf("%s dostal bidu!", hraci[2].jmeno_hrace);
                 delay(2000);
-                gotoxy(10, 10);
-                printf("                           ");
+                gotoxy(10, 10); printf("                           ");
                 break;
 
             }
             else if ((strela->x == START_X1) && (strela->y == START_Y1)) {
                 hraci[1].zasahy++;
                 vykresli_tank_start(1, hraci[1].zasahy + 1);
-                gotoxy(10, 10);
-                printf("%s dostal bidu!", hraci[1].jmeno_hrace);
+                gotoxy(10, 10); printf("%s dostal bidu!", hraci[1].jmeno_hrace);
                 delay(2000);
-                gotoxy(10, 10);
-                printf("                           ");
+                gotoxy(10, 10); printf("                           ");
                 break;
 
             }
@@ -323,14 +340,14 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
                 break;
 
             }
-           /* else if (baf[w] == 'x') {
+           else if (k == 'x') {
                 gotoxy(10, 10);
                 printf("Vedle!");
                 delay(3000);
                 gotoxy(10, 10);
                 printf("             ");
                 break;
-            }*/
+            }
             else {
                 gotoxy(strela->x, strela->y);
                 putc('*', stdout);
@@ -351,14 +368,32 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
             putc(' ', stdout);
             strela->x = strela->x + h * smer;
             strela->y = strela->y + 1;
-            //gotoxy(strela->x, strela->y);
-            //scanf("%c", &baf[k]);
+            gotoxy(strela->x, strela->y);
+            k = getc(stdout);
             if (((strela->x) >= SLOUPECKY) || ((strela->y) >= RADKY) || ((strela->x) <= 0) || ((strela->y) <= 0)) {
                 gotoxy(10, 10);
                 printf("Uplne mimo!");
-                delay(3000);
+                delay(2000);
                 gotoxy(10, 10);
                 printf("             ");
+                break;
+            }
+            else if ((strela->x == START_X2) && (strela->y == START_Y2) && (hraci[2].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[2].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           ");
+                break;
+            }
+            else if ((strela->x == START_X3) && (strela->y == START_Y3) && (hraci[3].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[3].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           ");
+                break;
+            }
+            else if ((strela->x == START_X1) && (strela->y == START_Y1) && (hraci[1].zasahy == 3)) {
+                gotoxy(10, 10); printf("%s jiz prohral :(", hraci[1].jmeno_hrace);
+                delay(2000);
+                gotoxy(10, 10); printf("                           ");
                 break;
             }
             else if ((strela->x == START_X2) && (strela->y == START_Y2)) {
@@ -394,7 +429,7 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
                 break;
            
             }
-           /* else if (baf[w] == 'x') {
+           else if (k == 'x') {
                 gotoxy(10, 10);
                 printf("Vedle!");
                 delay(3000);
@@ -402,13 +437,13 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
                 printf("             ");
                 
                 break;
-            }*/
+            }
             else {
                 barva(0); 
                 gotoxy(strela->x, strela->y);
                 putc('*', stdout);
             }
-            delay(200); //w++;
+            delay(100); //w++;
             }
             if (hraci[1].zasahy == 3) {
                 vykresli_tank_mrtvej(1, 3);
@@ -418,14 +453,8 @@ void strelba(int vstupX, int vstupY, int smerstrely, int jakmoc) {
             }
             if (hraci[3].zasahy == 3) {
                 vykresli_tank_mrtvej(3, 3);
-        }
-        /*while (strela->y != START_Y2) {
-            strela->x = strela->x + (cos(alfa) * v0 * t) / 1;
-            strela->y = strela->y - ((sin(alfa) * v0* t)+((1/2)*(-0,1)*t)) / 1;
-            gotoxy(strela->x, strela->y);
-            putc('*', stdout);
-            t++; delay(1000);}*/
-    // }    
+
+            }  
     }
 }
  
